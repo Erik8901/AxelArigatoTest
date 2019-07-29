@@ -6,3 +6,10 @@
 ul {
     list-style-type: none;
   }
+
+.movieInfo {
+    height: 300px;
+    width: 600px;
+    background-color: blue;
+    
+}
