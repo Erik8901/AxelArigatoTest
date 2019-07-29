@@ -9,62 +9,62 @@ class Films extends Component {
           movies: [],
           showInfoMovie: false,
           movieInfo: [],
-          characters: []
+          characters: [],
+          movieTitle: '',
+          movieTitle1: ''
   
       }//State
+     this.showMovie = this.showMovie.bind(this) 
   }//Contructo
   
   componentDidMount() {
     axios.get('https://swapi.co/api/films')
     .then(res => {
       let list = res.data.results
+     
       list.sort(function(a,b) {
         return a.release_date.slice(0,4) - b.release_date.slice(0,4)
     })
     this.setState({ movies: list });
     console.log(this.state.movies)
-    })
-    
-    
-   
-  }
+  })
+}
+
+
 
   showMovie = (movie) => {
-    this.setState({showInfoMovie: true})
+    
+  this.setState({showInfoMovie: true})
     
     let self = this.state.movies
     for (var i=0; i < self.length; i++) {
      if(self[i].title === movie) {
-    //  console.log(self[i].characters)
+    console.log(self[i].title)
+    this.setState({movieTitle: self[i].title })
 
-      axios.all(self[i].characters.map(chars => axios.get(chars)))
-      .then(axios.spread(function(...res) {
-       // console.log(res)
-        let charList = res
-        let nameList = []
-        for(let i=0; i < charList.length; i++) {
-         //console.log(charList[i].data.name)
-          nameList.push(charList[i].data.name)
+    axios.all(self[i].characters.map(chars => axios.get(chars)))
+      .then(axios.spread((...res) => {
+        //console.log(res)
+        let nameList = res
+        let charList = []
+       
+        for(let i=0; i < nameList.length; i++) {
+        
+          charList.push(nameList[i].data)
           
-         
-
-
-          console.log(nameList)
+        this.setState({characters: charList})
+        
+       // console.log(this.state.characters)
         }
-        //this.setState({characters: nameList})
+        
       }))
-     
-      
-      
-      //this.setState({movieInfo:self[i].characters})
       
      }//if
     }//forLoop
+    
   }//showMovie
 
   hideMovie = () => {
-    
-    console.log("iojppz")
     this.setState({showInfoMovie: false})
   }
   
@@ -83,10 +83,16 @@ render() {
       </ul>
       {
         this.state.showInfoMovie ?
-        <div className="movieInfo">{this.state.movieInfo}
-          <button onClick={() => this.hideMovie()}>Go Back</button>
-        
-        </div>
+        <div className="movieInfo">
+           <button onClick={() => this.hideMovie()}>Go Back</button>
+
+            {this.state.movieTitle}
+          <ul>
+         {this.state.characters.map(chars => <li key={chars.name}>
+         <p>{chars.name}</p>
+         </li>)}
+        </ul>
+          </div>
         :null
       }
       
