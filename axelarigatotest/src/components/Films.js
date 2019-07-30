@@ -68,7 +68,7 @@ render() {
                 this.state.movies.map(movie => 
             <li key={movie.title}>
               <button className="showMovie" onClick={() => this.showMovie(movie.title)}>
-                {movie.title} Episode:{movie.episode_id} Release Date: {movie.release_date}</button>
+                {movie.title} | Episode: {movie.episode_id} | Release Date: {movie.release_date}</button>
             </li>)}
           </ul>
             
@@ -91,5 +91,5 @@ render() {
   }//render
 }//Films Component
   
-export default Films;
+ export default Films;
   
