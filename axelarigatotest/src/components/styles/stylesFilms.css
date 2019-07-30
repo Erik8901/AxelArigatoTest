@@ -1,5 +1,5 @@
-.Films {
-    background-color: darkgoldenrod;
+.films {
+    /* background-color: darkgoldenrod;  */
 }
 
 
@@ -7,9 +7,104 @@ ul {
     list-style-type: none;
   }
 
-.movieInfo {
+h3 {
+    color: white;
+    text-align: left;
+    font-size: 200%;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+}
+
+h4 {
+    color: white;
+    text-align: left;
+    font-size: 100%;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+}
+
+
+.loadingScreen {
+    background-image: url(./img/loadingscreen.jpg);
     height: 300px;
     width: 600px;
-    background-color: blue;
-    
+    margin: auto;
+    margin-top: 10%;
+    border-radius: 6%;
+}
+
+h2 {
+    color: white;
+    text-align: center;
+    font-size: 400%;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    margin: auto;
+    margin-top: 30px;
+}
+
+li {
+     margin: 10px;
+     
+}
+
+.showMovie {
+    cursor: pointer;
+    width: 600px;
+    height: 60px;
+    background-color: #332A40;
+    border: none;
+    opacity: 0.9;
+    color: white;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    font-size: 100%;
+}
+
+.showMovie:hover { 
+    filter: brightness(70%);
+}
+
+.movieInfo {
+    position: relative;
+    background-color: #332A40;
+    left: 40%;
+    margin-top: -494px;
+    width: 1000px;
+    height: 484px;
+    overflow-x: hidden;
+}
+
+.goBack {
+    cursor: pointer;
+    border: none;
+    color: white;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    margin:30px;
+    height: 30px;
+    width: 100px;
+    background-color: gray;
+}
+
+.goBack:hover {
+    filter: brightness(70%);
+}
+
+.nameOfEpisode {
+    color: white;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    text-align: center;
+    font-size: 200%;
+}
+
+.chars {
+    color: white;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+.ulCharacters {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+}
+
+.listCharacters {
+    color: white;
+    margin: 1px;
 }
